@@ -24,7 +24,7 @@ function draw() {
   background(0);
 
   let miclevel = mic.getLevel();
-  let circleSize = map(volume, 0, 1, 20, 400);
+  let circleSize = map(miclevel, 0, 1, 20, 400);
   fill(255, 0, 0);
   ellipse(width / 2, height / 2, circleSize, circleSize);
 
@@ -44,10 +44,16 @@ function keyPressed() {
   
   if (key.toLowerCase() === 'p') {
     playSound(soundP);
+	soundL.stop();
+	soundK.stop();
   } else if (key.toLowerCase() === 'l') {
     playSound(soundL);
+	soundP.stop();
+	soundK.stop();
   } else if (key.toLowerCase() === 'k') {
     playSound(soundK);
+	soundP.stop();
+	soundL.stop();
   }
 }
 
